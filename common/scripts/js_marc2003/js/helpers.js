@@ -311,14 +311,14 @@ function _createFolder(folder, is_recursive) {
     if (utils.IsDirectory(folder)) {
         return;
     }
-    
+
     if (is_recursive) {
         let parent_path = fso.GetParentFolderName(folder);
         if (!utils.IsDirectory(parent_path)) {
             _createFolder(parent_path, true);
         }
     }
-    
+
     fso.CreateFolder(folder)
 }
 
@@ -447,30 +447,30 @@ function _getElementsByTagName(value, tag) {
 }
 
 function _getExt(path) {
-	return path.split('.').pop().toLowerCase();
+    return path.split('.').pop().toLowerCase();
 }
 
 function _getFiles(folder, exts, newest_first) {
-	let files = [];
-	if (utils.IsDirectory(folder)) {
-		for (let file of fso.GetFolder(folder).Files) {
-			files.push(file.Path);
-		}
-	}
-	if (exts) {
-		files = _.filter(files, (item) => {
-			let ext = _getExt(item);
-			return exts.includes(ext);
-		});
-	}
-	if (newest_first) {
-		return _.orderBy(files, (item) => {
-			return _lastModified(item);
-		}, 'desc');
-	} else {
-		files.srt();
-		return files;
-	}
+    let files = [];
+    if (utils.IsDirectory(folder)) {
+        for (let file of fso.GetFolder(folder).Files) {
+            files.push(file.Path);
+        }
+    }
+    if (exts) {
+        files = _.filter(files, (item) => {
+            let ext = _getExt(item);
+            return exts.includes(ext);
+        });
+    }
+    if (newest_first) {
+        return _.orderBy(files, (item) => {
+            return _lastModified(item);
+        }, 'desc');
+    } else {
+        files.srt();
+        return files;
+    }
 }
 
 function _hacks() {
@@ -611,45 +611,45 @@ function _lockSize(w, h) {
 }
 
 function _menu(x, y, flags) {
-	let menu = window.CreatePopupMenu();
-	let file = new _main_menu_helper('File', 1000, menu);
-	let edit = new _main_menu_helper('Edit', 2000, menu);
-	let view = new _main_menu_helper('View', 3000, menu);
-	let playback = new _main_menu_helper('Playback', 4000, menu);
-	let library = new _main_menu_helper('Library', 5000, menu);
-	let help = new _main_menu_helper('Help', 6000, menu);
-	
-	let idx = menu.TrackPopupMenu(x, y, flags);
-	switch (true) {
-	case idx == 0:
-		break;
-	case idx < 2000:
-		file.mm.ExecuteByID(idx - 1000);
-		break;
-	case idx < 3000:
-		edit.mm.ExecuteByID(idx - 2000);
-		break;
-	case idx < 4000:
-		view.mm.ExecuteByID(idx - 3000);
-		break;
-	case idx < 5000:
-		playback.mm.ExecuteByID(idx - 4000);
-		break;
-	case idx < 6000:
-		library.mm.ExecuteByID(idx - 5000);
-		break;
-	case idx < 7000:
-		help.mm.ExecuteByID(idx - 6000);
-		break;
-	}
+    let menu = window.CreatePopupMenu();
+    let file = new _main_menu_helper('File', 1000, menu);
+    let edit = new _main_menu_helper('Edit', 2000, menu);
+    let view = new _main_menu_helper('View', 3000, menu);
+    let playback = new _main_menu_helper('Playback', 4000, menu);
+    let library = new _main_menu_helper('Library', 5000, menu);
+    let help = new _main_menu_helper('Help', 6000, menu);
+
+    let idx = menu.TrackPopupMenu(x, y, flags);
+    switch (true) {
+    case idx == 0:
+        break;
+    case idx < 2000:
+        file.mm.ExecuteByID(idx - 1000);
+        break;
+    case idx < 3000:
+        edit.mm.ExecuteByID(idx - 2000);
+        break;
+    case idx < 4000:
+        view.mm.ExecuteByID(idx - 3000);
+        break;
+    case idx < 5000:
+        playback.mm.ExecuteByID(idx - 4000);
+        break;
+    case idx < 6000:
+        library.mm.ExecuteByID(idx - 5000);
+        break;
+    case idx < 7000:
+        help.mm.ExecuteByID(idx - 6000);
+        break;
+    }
 }
 
 function _main_menu_helper(name, base_id, main_menu) {
-	this.popup = window.CreatePopupMenu();
-	this.mm = fb.CreateMainMenuManager();
-	this.mm.Init(name);
-	this.mm.BuildMenu(this.popup, base_id, -1);
-	this.popup.AppendTo(main_menu, MF_STRING, name);
+    this.popup = window.CreatePopupMenu();
+    this.mm = fb.CreateMainMenuManager();
+    this.mm.Init(name);
+    this.mm.BuildMenu(this.popup, base_id, -1);
+    this.popup.AppendTo(main_menu, MF_STRING, name);
 }
 
 function _menu_item(x, y, name, flags) {
@@ -673,23 +673,23 @@ function _open(file) {
 }
 
 function _p(a, b) {
-	Object.defineProperty(this, _.isBoolean(b) ? 'enabled' : 'value', {
-		get() {
-			return this.b;
-		},
-		set(value) {
-			this.b = value;
-			window.SetProperty(this.a, this.b);
-		}
-	});
+    Object.defineProperty(this, _.isBoolean(b) ? 'enabled' : 'value', {
+        get() {
+            return this.b;
+        },
+        set(value) {
+            this.b = value;
+            window.SetProperty(this.a, this.b);
+        }
+    });
 
-	this.toggle = () => {
-		this.b = !this.b;
-		window.SetProperty(this.a, this.b);
-	}
+    this.toggle = () => {
+        this.b = !this.b;
+        window.SetProperty(this.a, this.b);
+    }
 
-	this.a = a;
-	this.b = window.GetProperty(a, b);
+    this.a = a;
+    this.b = window.GetProperty(a, b);
 }
 
 function _q(value) {
@@ -756,7 +756,7 @@ function _save(file, value) {
         console.log('Error saving to ' + file);
         return false;
     }
-    
+
     return true;
 }
 
@@ -1029,42 +1029,42 @@ const VK_RCONTROL = 0xA3; // Right CONTROL key
 const VK_LMENU = 0xA4; // Left MENU key (Left Alt)
 const VK_RMENU = 0xA5; // Right MENU key (Right Alt)
 
-const VK_KEY_0 = 0x30; //	0
-const VK_KEY_1 = 0x31; //	1
-const VK_KEY_2 = 0x32; //	2
-const VK_KEY_3 = 0x33; //	3
-const VK_KEY_4 = 0x34; //	4
-const VK_KEY_5 = 0x35; //	5
-const VK_KEY_6 = 0x36; //	6
-const VK_KEY_7 = 0x37; //	7
-const VK_KEY_8 = 0x38; //	8
-const VK_KEY_9 = 0x39; //	9
-const VK_KEY_A = 0x41; //	A
-const VK_KEY_B = 0x42; //	B
-const VK_KEY_C = 0x43; //	C
-const VK_KEY_D = 0x44; //	D
-const VK_KEY_E = 0x45; //	E
-const VK_KEY_F = 0x46; //	F
-const VK_KEY_G = 0x47; //	G
-const VK_KEY_H = 0x48; //	H
-const VK_KEY_I = 0x49; //	I
-const VK_KEY_J = 0x4A; //	J
-const VK_KEY_K = 0x4B; //	K
-const VK_KEY_L = 0x4C; //	L
-const VK_KEY_M = 0x4D; //	M
-const VK_KEY_N = 0x4E; //	N
-const VK_KEY_O = 0x4F; //	O
-const VK_KEY_P = 0x50; //	P
-var VK_KEY_Q = 0x51; //	Q
-var VK_KEY_R = 0x52; //	R
-var VK_KEY_S = 0x53; //	S
-var VK_KEY_T = 0x54; //	T
-var VK_KEY_U = 0x55; //	U
-var VK_KEY_V = 0x56; //	V
-var VK_KEY_W = 0x57; //	W
-var VK_KEY_X = 0x58; //	X
-var VK_KEY_Y = 0x59; //	Y
-var VK_KEY_Z = 0x5A; //	Z
+const VK_KEY_0 = 0x30; //   0
+const VK_KEY_1 = 0x31; //   1
+const VK_KEY_2 = 0x32; //   2
+const VK_KEY_3 = 0x33; //   3
+const VK_KEY_4 = 0x34; //   4
+const VK_KEY_5 = 0x35; //   5
+const VK_KEY_6 = 0x36; //   6
+const VK_KEY_7 = 0x37; //   7
+const VK_KEY_8 = 0x38; //   8
+const VK_KEY_9 = 0x39; //   9
+const VK_KEY_A = 0x41; //   A
+const VK_KEY_B = 0x42; //   B
+const VK_KEY_C = 0x43; //   C
+const VK_KEY_D = 0x44; //   D
+const VK_KEY_E = 0x45; //   E
+const VK_KEY_F = 0x46; //   F
+const VK_KEY_G = 0x47; //   G
+const VK_KEY_H = 0x48; //   H
+const VK_KEY_I = 0x49; //   I
+const VK_KEY_J = 0x4A; //   J
+const VK_KEY_K = 0x4B; //   K
+const VK_KEY_L = 0x4C; //   L
+const VK_KEY_M = 0x4D; //   M
+const VK_KEY_N = 0x4E; //   N
+const VK_KEY_O = 0x4F; //   O
+const VK_KEY_P = 0x50; //   P
+var VK_KEY_Q = 0x51; // Q
+var VK_KEY_R = 0x52; // R
+var VK_KEY_S = 0x53; // S
+var VK_KEY_T = 0x54; // T
+var VK_KEY_U = 0x55; // U
+var VK_KEY_V = 0x56; // V
+var VK_KEY_W = 0x57; // W
+var VK_KEY_X = 0x58; // X
+var VK_KEY_Y = 0x59; // Y
+var VK_KEY_Z = 0x5A; // Z
 
 var VK_F1 = 0x70; // F1
 var VK_F10 = 0x79; // F10
@@ -1163,7 +1163,22 @@ var ONE_WEEK = 604800000;
 var DEFAULT_ARTIST = '$meta(artist,0)';
 var N = window.Name + ':';
 
-const DPI = WshShell.RegRead('HKCU\\Control Panel\\Desktop\\WindowMetrics\\AppliedDPI');
+function make_dword(value) {
+    const buffer = new ArrayBuffer(4);
+    const view = new DataView(buffer);
+    view.setUint32(0, value, true);
+    return view;
+};
+
+const DPI_KEY = 'HKCU\\Control Panel\\Desktop\\WindowMetrics\\AppliedDPI';
+try {
+    var DPI = WshShell.RegRead(DPI_KEY);
+} catch (e) {
+    const default_dpi = 96;
+    console.log('Missing registry key: ' + DPI_KEY + '.\n'
+                + 'Using default DPI value of ' + default_dpi + '.');
+    var DPI = make_dword(96);
+}
 
 var LM = _scale(5);
 var TM = _scale(16);
@@ -1173,7 +1188,7 @@ window.Tooltip.SetMaxWidth(1200);
 
 let folders = {};
 
-folders.home = (() => {  
+folders.home = (() => {
   return `${utils.GetPackageInfo(common_package_id_internal).Directories.Scripts}/js_marc2003/`;
 })();
 
@@ -1186,26 +1201,26 @@ _createFolder(folders.data, true);
 
 let fontawesome = gdi.Font('FontAwesome', 48);
 let chars = {
-	up : '\uF077',
-	down : '\uF078',
-	close : '\uF00D',
-	rating_on : '\uF005',
-	rating_off : '\uF006',
-	heart_on : '\uF004',
-	heart_off : '\uF08A',
-	prev : '\uF049',
-	next : '\uF050',
-	play : '\uF04B',
-	pause : '\uF04C',
-	stop : '\uF04D',
-	preferences : '\uF013',
-	search : '\uF002',
-	console : '\uF120',
-	info : '\uF05A',
-	audioscrobbler : '\uF202',
-	minus : '\uF068',
-	music : '\uF001',
-	menu : '\uF0C9'
+    up : '\uF077',
+    down : '\uF078',
+    close : '\uF00D',
+    rating_on : '\uF005',
+    rating_off : '\uF006',
+    heart_on : '\uF004',
+    heart_off : '\uF08A',
+    prev : '\uF049',
+    next : '\uF050',
+    play : '\uF04B',
+    pause : '\uF04C',
+    stop : '\uF04D',
+    preferences : '\uF013',
+    search : '\uF002',
+    console : '\uF120',
+    info : '\uF05A',
+    audioscrobbler : '\uF202',
+    minus : '\uF068',
+    music : '\uF001',
+    menu : '\uF0C9'
 };
 
 let popup = {
