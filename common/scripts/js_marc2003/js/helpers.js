@@ -1177,7 +1177,7 @@ try {
     const default_dpi = 96;
     console.log('Missing registry key: ' + DPI_KEY + '.\n'
                 + 'Using default DPI value of ' + default_dpi + '.');
-    var DPI = make_dword(96);
+    var DPI = make_dword(default_dpi);
 }
 
 var LM = _scale(5);
