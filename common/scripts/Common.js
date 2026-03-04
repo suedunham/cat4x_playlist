@@ -740,3 +740,11 @@ let PanelProperties = (function () {
 })();
 
 let g_properties = PanelProperties.get_instance();
+
+function split_color(string_value) {
+    return string_value.split(/[,\s]+/);
+}
+
+function rgb_prop(color_array) {
+    return _RGB(...split_color(color_array));
+}

@@ -18,9 +18,8 @@ g_theme.colors.pss_back = _RGB(25, 28, 30);
 g_theme.colors.panel_back = _RGB(25, 28, 30);
 g_theme.colors.panel_front = _RGB(41, 44, 48);
 g_theme.colors.panel_line = _RGB(49, 54, 59);
-g_theme.colors.panel_line_selected = _RGB(61, 174, 233);
+g_theme.colors.panel_line_selected = rgb_prop(g_properties.theme_accent_color);
 g_theme.colors.panel_text_normal = _RGB(252, 252, 252);
 g_theme.colors.scroll_back = _RGB(32, 35, 28);
 g_theme.colors.scroll_arrow = _RGB(252, 252, 252);
 g_theme.colors.scroll_line = _RGB(76, 78, 81);
-
