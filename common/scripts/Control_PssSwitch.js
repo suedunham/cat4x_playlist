@@ -1,4 +1,5 @@
 ﻿include('Common.js');
+include('Theme_Settings.js');
 
 var pss_switch = new function() {
 

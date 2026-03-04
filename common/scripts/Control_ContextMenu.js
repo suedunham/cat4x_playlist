@@ -1,4 +1,5 @@
 include('Common.js');
+include('Theme_Settings.js');
 
 /** @namespace */
 var Context = {};

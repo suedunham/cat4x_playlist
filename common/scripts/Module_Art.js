@@ -1,4 +1,5 @@
 include('Common.js');
+include('Theme_Settings.js');
 
 g_properties.add_properties(
     {

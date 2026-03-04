@@ -1183,8 +1183,11 @@ try {
 var LM = _scale(5);
 var TM = _scale(16);
 
-window.Tooltip.SetFont('Segoe UI', _scale(9));
-window.Tooltip.SetMaxWidth(1200);
+// Didn't want to invoke theme font this far down in the includes, nor was
+// the hard-coded value desirable. So we'll just try commenting it out for
+// now. Maybe it can be moved elsewhere if needed.
+// window.Tooltip.SetFont('Segoe UI', _scale(9));
+// window.Tooltip.SetMaxWidth(1200);
 
 let folders = {};
 

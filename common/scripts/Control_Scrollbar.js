@@ -4,6 +4,7 @@
 */
 
 include('Common.js');
+include('Theme_Settings.js');
 
 /* The scrollbar font and character properties have been refactored from
    literal values to the properties below. The commented-out lines are the

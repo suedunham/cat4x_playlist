@@ -1,9 +1,9 @@
 ﻿{
-  "author": "TheQwertiest",
-  "description": "Scripts used in other packages of CaTRoX theme.\nDoes nothing by itself.\nScripts in `js_marc2003` directory were originally made by marc2003",
+  "author": "TheQwertiest, Sue Dunham",
+  "description": "Based on CaTRoX_QWR v5.0.0.\nScripts used in other packages of theme.\nDoes nothing by itself.\nScripts in `js_marc2003` directory were originally made by marc2003",
   "enableDragDrop": false,
   "id": "{1583C4B7-53AD-403F-8F7E-CB20490AAA26}",
-  "name": "CaTRoX: Utilities",
+  "name": "CaT4X: Utilities",
   "shouldGrabFocus": false,
-  "version": "5.0.0"
+  "version": "0.1.0"
 }

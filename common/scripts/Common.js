@@ -2,22 +2,6 @@ const common_package_id_internal = '{1583C4B7-53AD-403F-8F7E-CB20490AAA26}';
 
 include('js_marc2003/js/helpers.js');
 
-let g_theme = {};
-g_theme.name = 'CaTRoX (QWR Edition)';
-g_theme.version = '5.0.0';
-g_theme.folder_name = 'CaTRoX';
-
-g_theme.colors = {};
-g_theme.colors.pss_back = _RGB(25, 28, 30);
-g_theme.colors.panel_back = _RGB(25, 28, 30);
-g_theme.colors.panel_front = _RGB(41, 44, 48);
-g_theme.colors.panel_line = _RGB(49, 54, 59);
-g_theme.colors.panel_line_selected = _RGB(61, 174, 233);
-g_theme.colors.panel_text_normal = _RGB(252, 252, 252);
-g_theme.colors.scroll_back = _RGB(32, 35, 28);
-g_theme.colors.scroll_arrow = _RGB(252, 252, 252);
-g_theme.colors.scroll_line = _RGB(76, 78, 81);
-
 /** @enum{number} */
 const g_font_style = {
     regular:     0,

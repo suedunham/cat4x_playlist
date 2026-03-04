@@ -1,6 +1,7 @@
 ﻿'use strict'
 
 include('Common.js');
+include('Theme_Settings.js');
 include('Control_List.js');
 
 function on_paint(gr) {

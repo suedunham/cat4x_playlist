@@ -5,6 +5,7 @@ qwr_utils.common_include([
     'Control_PssSwitch.js',
     'Control_Scrollbar.js',
     'Control_List.js',
+    'Theme_Settings.js',
     'Utility_LinkedList.js',
 ]);
 
