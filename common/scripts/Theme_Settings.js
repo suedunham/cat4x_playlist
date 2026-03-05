@@ -1,5 +1,6 @@
 include('Common.js');
 
+// Common properties
 g_properties.add_properties(
     {
         theme_accent_color: ['user.theme.color.accent', '61, 174, 233'],
@@ -7,11 +8,24 @@ g_properties.add_properties(
         theme_panel_front_color: ['user.theme.color.panel_foreground', '41, 44, 48'],
         theme_panel_line_color: ['user.theme.color.panel_line', '76, 78, 80'],
         theme_text_color: ['user.theme.color.text', '252, 252, 252'],
+        theme_window_background_color: ['user.theme.color.window_background', '32, 35, 38'],
     }
 );
 
-// This existed in Common.js before colors were made into properties, and
-// it may be superfluous now.
+// Playlist viewer properties
+g_properties.add_properties(
+    {
+        theme_playlist_mgr_text_normal: ['user.theme.color.playlist_mgr_text', '132, 141, 150'],
+        theme_playlist_text_normal: ['user.theme.color.playlist_text', '161, 169, 177'],
+        theme_playlist_row_background_alt: ['user.theme.color.playlist_row_background_alt', '29, 31, 34'],
+        theme_playlist_row_artist_normal: ['user.theme.color.playlist_row_artist_normal', '120, 122, 124'],
+        theme_playlist_row_selected: ['user.theme.color.playlist_row_selected', '22, 58, 76'],
+        theme_playlist_row_drop_position_boundary: ['user.theme.color.playlist_drop_position_boundary', '233, 118, 61'],
+
+    }
+);
+
+// Internal data object.
 let g_theme = {};
 g_theme.name = 'CaT4X';
 g_theme.version = '0.1.0';
@@ -22,16 +36,16 @@ g_theme.colors = {};
 
 // General colors
 g_theme.colors.pss_back = rgb_prop(g_properties.theme_panel_back_color);
-g_theme.colors.panel_back = rgb_prop(g_properties.theme_panel_back_color);
+g_theme.colors.panel_back = g_theme.colors.pss_back
 g_theme.colors.panel_front = rgb_prop(g_properties.theme_panel_front_color);
 g_theme.colors.panel_line = rgb_prop(g_properties.theme_panel_line_color);
 g_theme.colors.panel_line_selected = rgb_prop(g_properties.theme_accent_color);
 g_theme.colors.panel_text_normal = rgb_prop(g_properties.theme_text_color);
 
 // Scrollbar colors
-g_theme.colors.scroll_back = _RGB(32, 35, 38);
-g_theme.colors.scroll_arrow = rgb_prop(g_properties.theme_text_color);
-g_theme.colors.scroll_line = _RGB(76, 78, 80);
+g_theme.colors.scroll_back = rgb_prop(g_properties.theme_window_background_color);
+g_theme.colors.scroll_arrow = g_theme.colors.panel_text_normal;
+g_theme.colors.scroll_line = g_theme.colors.panel_line;
 
 
 // Playlist viewer colors
@@ -40,11 +54,11 @@ var g_pl_colors = {};
 //---> Common
 g_pl_colors.background = g_theme.colors.panel_back;
 //---> Playlist Manager
-g_pl_colors.playlist_mgr_text_normal = _RGB(132, 141, 150);
+g_pl_colors.playlist_mgr_text_normal = rgb_prop(g_properties.theme_playlist_mgr_text_normal);
 g_pl_colors.playlist_mgr_text_hovered = g_theme.colors.panel_text_normal;
-g_pl_colors.playlist_mgr_text_pressed = _RGB(109, 112, 114);
+g_pl_colors.playlist_mgr_text_pressed = g_pl_colors.playlist_mgr_text_normal;
 //---> Header
-g_pl_colors.group_title = _RGB(187, 194, 200);
+g_pl_colors.group_title = rgb_prop(g_properties.theme_playlist_text_normal);
 g_pl_colors.group_title_selected = g_theme.colors.panel_text_normal;
 g_pl_colors.artist_normal = g_pl_colors.group_title;
 g_pl_colors.artist_playing = g_pl_colors.artist_normal;
@@ -60,21 +74,20 @@ g_pl_colors.line_selected = g_theme.colors.panel_line_selected;
 //---> Row
 g_pl_colors.title_selected = g_theme.colors.panel_text_normal;
 g_pl_colors.title_playing = g_theme.colors.panel_line_selected;
-g_pl_colors.title_normal = _RGB(161, 169, 177);
-// g_pl_colors.title_normal = _RGB(169, 174, 180);
+g_pl_colors.title_normal = g_pl_colors.group_title;
 g_pl_colors.row_artist_selected = g_pl_colors.title_normal;
 g_pl_colors.row_artist_playing = rgb_prop(g_properties.theme_accent_color);
-g_pl_colors.row_artist_normal = g_pl_colors.playlist_mgr_text_pressed;
-g_pl_colors.count_normal = _RGB(120, 122, 124);
+g_pl_colors.row_artist_normal = rgb_prop(g_properties.theme_playlist_row_artist_normal);
+g_pl_colors.count_normal = g_pl_colors.row_artist_normal;
 g_pl_colors.count_selected = g_pl_colors.title_selected;
 g_pl_colors.count_playing = g_pl_colors.title_playing;
-g_pl_colors.row_selected = _RGB(22, 56, 76);
-g_pl_colors.row_alternate = _RGB(34, 37, 40);
+g_pl_colors.row_selected = rgb_prop(g_properties.theme_playlist_row_selected);
+g_pl_colors.row_alternate = rgb_prop(g_properties.theme_playlist_row_background_alt);
 g_pl_colors.row_focus_selected = g_theme.colors.panel_line_selected;
 g_pl_colors.row_focus_normal = _RGB(80, 80, 80);
 g_pl_colors.row_queued = _RGBA(150, 150, 150, 0);
 g_pl_colors.row_drop_position = _RGB(140, 142, 144);
-g_pl_colors.row_drop_position_boundary = _RGB(233, 118, 61);
+g_pl_colors.row_drop_position_boundary = rgb_prop(g_properties.theme_playlist_row_drop_position_boundary);
 //---> Misc
 g_pl_colors.dummy_text = _RGB(80, 80, 80);
 
