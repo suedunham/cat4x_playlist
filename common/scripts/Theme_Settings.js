@@ -1,6 +1,6 @@
 include('Common.js');
 
-// Common properties
+// Common color properties
 g_properties.add_properties(
     {
         theme_accent_color: ['user.theme.color.accent', '61, 174, 233'],
@@ -12,7 +12,7 @@ g_properties.add_properties(
     }
 );
 
-// Playlist viewer properties
+// Playlist viewer color properties
 g_properties.add_properties(
     {
         theme_playlist_mgr_text_normal: ['user.theme.color.playlist_mgr_text', '132, 141, 150'],
@@ -93,27 +93,74 @@ g_pl_colors.row_drop_position_boundary = rgb_prop(g_properties.theme_playlist_ro
 g_pl_colors.dummy_text = g_theme.colors.panel_line;
 
 
+// Playlist viewer font properties
+// Font sizes are in pixels.
+g_properties.add_properties(
+    {
+        theme_playlist_mgr_font: ['user.theme.font.playlist_mgr', 'Noto Sans Semibold'],
+        theme_playlist_mgr_font_size: ['user.theme.font.playlist_mgr_size', 12],
+        theme_playlist_title_font: ['user.theme.font.playlist_title', 'Noto Sans Condensed'],
+        theme_playlist_title_font_size: ['user.theme.font.playlist_title_size', 12],
+        theme_playlist_title_play_sel_font: ['user.theme.font.playlist_title_play_sel', 'Noto Sans Condensed Semibold'],
+        theme_playlist_artist_font: ['user.theme.font.playlist_artist', 'Noto Sans Semibold'],
+        theme_playlist_artist_font_size: ['user.theme.font.playlist_artist_size', 17],
+        theme_playlist_artist_compact_font: ['user.theme.font.playlist_artist_compact', 'Noto Sans Semibold'],
+        theme_playlist_artist_compact_font_size: ['user.theme.font.playlist_artist_compact_size', 15],
+        theme_playlist_playcount_font: ['user.theme.font.playlist_playcount', 'Noto Sans'],
+        theme_playlist_playcount_font_size: ['user.theme.font.playlist_playcount_size', 9],
+        theme_playlist_album_font: ['user.theme.font.playlist_album', 'Noto Sans Semibold'],
+        theme_playlist_album_font_size: ['user.theme.font.playlist_album_size', 15],
+        theme_playlist_date_font: ['user.theme.font.playlist_date', 'Noto Sans Semibold'],
+        theme_playlist_date_font_size: ['user.theme.font.playlist_date_size', 16],
+        theme_playlist_info_font: ['user.theme.font.playlist_info', 'Noto Sans'],
+        theme_playlist_info_font_size: ['user.theme.font.playlist_info_size', 11],
+        theme_playlist_cover_font: ['user.theme.font.playlist_cover', 'Noto Sans Semibold'],
+        theme_playlist_cover_font_size: ['user.theme.font.playlist_cover_size', 11],
+        theme_playlist_rating_not_set_font: ['user.theme.font.playlist_rating_not_set', 'Noto Sans Symbols'],
+        theme_playlist_rating_not_set_font_size: ['user.theme.font.playlist_rating_not_set_size', 14],
+        theme_playlist_rating_set_font: ['user.theme.font.playlist_rating_set', 'Noto Sans Symbols'],
+        theme_playlist_rating_set_font_size: ['user.theme.font.playlist_rating_set_size', 16],
+        theme_playlist_empty_font: ['user.theme.font.playlist_empty', 'Noto Sans'],
+        theme_playlist_empty_font_size: ['user.theme.font.playlist_empty_size', 16],
+    }
+);
+
 /** @type {Object<string, IGdiFont>} */
 var g_pl_fonts = {
-    playlist_mgr:   gdi.Font('Noto Sans Semibold', 12),
-
-    title_normal:   gdi.Font('Noto Sans Condensed', 12),
-    title_selected: gdi.Font('Noto Sans Condensed Semibold', 12),
-    title_playing:  gdi.Font('Noto Sans Condensed Semibold', 12),
-
-    artist_normal:          gdi.Font('Noto Sans Semibold', 17),
-    artist_playing:         gdi.Font('Noto Sans Semibold', 17, g_font_style.underline),
-    artist_normal_compact:  gdi.Font('Noto Sans Semibold', 15),
-    artist_playing_compact: gdi.Font('Noto Sans Semibold', 15, g_font_style.underline),
-
-    playcount:      gdi.Font('Noto Sans', 9),
-    album:          gdi.Font('Noto Sans Semibold', 15),
-    date:           gdi.Font('Noto Sans Semibold', 16),
-    date_compact:   gdi.Font('Noto Sans Semibold', 15),
-    info:           gdi.Font('Noto Sans', 11),
-    cover:          gdi.Font('Noto Sans Semibold', 11),
-    rating_not_set: gdi.Font('Noto Sans Symbols', 14),
-    rating_set:     gdi.Font('Noto Sans Symbols', 16),
-
-    dummy_text: gdi.Font('Noto Sans', 16)
+    playlist_mgr: gdi.Font(g_properties.theme_playlist_mgr_font,
+                           g_properties.theme_playlist_mgr_font_size),
+    title_normal: gdi.Font(g_properties.theme_playlist_title_font,
+                           g_properties.theme_playlist_title_font_size),
+    title_selected: gdi.Font(g_properties.theme_playlist_title_font_play_sel,
+                             g_properties.theme_playlist_title_font_size),
+    title_playing: gdi.Font(g_properties.theme_playlist_title_font_play_sel,
+                            g_properties.theme_playlist_title_font_size),
+    artist_normal: gdi.Font(g_properties.theme_playlist_artist_font,
+                            g_properties.theme_playlist_artist_font_size),
+    artist_playing: gdi.Font(g_properties.theme_playlist_artist_font,
+                             g_properties.theme_playlist_artist_font_size,
+                             g_font_style.underline),
+    artist_normal_compact: gdi.Font(g_properties.theme_playlist_artist_compact_font,
+                                    g_properties.theme_playlist_artist_compact_font_size),
+    artist_playing_compact: gdi.Font(g_properties.theme_playlist_artist_compact_font,
+                                     g_properties.theme_playlist_artist_compact_font_size,
+                                     g_font_style.underline),
+    playcount: gdi.Font(g_properties.theme_playlist_playcount_font,
+                        g_properties.theme_playlist_playcount_font_size),
+    album: gdi.Font(g_properties.theme_playlist_album_font,
+                    g_properties.theme_playlist_album_font_size),
+    date: gdi.Font(g_properties.theme_playlist_date_font,
+                   g_properties.theme_playlist_date_font_size),
+    date_compact: gdi.Font(g_properties.theme_playlist_date_font,
+                           g_properties.theme_playlist_artist_compact_font_size),
+    info: gdi.Font(g_properties.theme_playlist_info_font,
+                   g_properties.theme_playlist_info_font_size),
+    cover: gdi.Font(g_properties.theme_playlist_cover_font,
+                    g_properties.theme_playlist_cover_font_size),
+    rating_not_set: gdi.Font(g_properties.theme_playlist_rating_not_set_font,
+                             g_properties.theme_playlist_rating_not_set_font_size),
+    rating_set: gdi.Font(g_properties.theme_playlist_rating_set_font,
+                         g_properties.theme_playlist_rating_set_font_size),
+    empty_text: gdi.Font(g_properties.theme_playlist_empty_font,
+                         g_properties.theme_playlist_empty_font_size),
 };

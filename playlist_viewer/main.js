@@ -628,7 +628,7 @@ function Playlist(x, y) {
                 text = 'Playlist: ' + plman.GetPlaylistName(cur_playlist_idx) + '\n<--- Empty --->';
             }
 
-            gr.DrawString(text, g_pl_fonts.dummy_text, g_pl_colors.dummy_text, this.x, this.y, this.w, this.h, g_string_format_center.value());
+            gr.DrawString(text, g_pl_fonts.empty_text, g_pl_colors.empty_text, this.x, this.y, this.w, this.h, g_string_format_center.value());
         }
 
         if (this.is_scrollbar_available) {
