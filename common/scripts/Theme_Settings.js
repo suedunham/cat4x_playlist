@@ -20,6 +20,7 @@ g_properties.add_properties(
         theme_playlist_row_background_alt: ['user.theme.color.playlist_row_background_alt', '29, 31, 34'],
         theme_playlist_row_artist_normal: ['user.theme.color.playlist_row_artist_normal', '120, 122, 124'],
         theme_playlist_row_selected: ['user.theme.color.playlist_row_selected', '22, 58, 76'],
+        theme_playlist_row_queued: ['user.theme.color.playlist_row_queued', '252, 252, 252, 20'],
         theme_playlist_row_drop_position_boundary: ['user.theme.color.playlist_drop_position_boundary', '233, 118, 61'],
 
     }
@@ -84,12 +85,12 @@ g_pl_colors.count_playing = g_pl_colors.title_playing;
 g_pl_colors.row_selected = rgb_prop(g_properties.theme_playlist_row_selected);
 g_pl_colors.row_alternate = rgb_prop(g_properties.theme_playlist_row_background_alt);
 g_pl_colors.row_focus_selected = g_theme.colors.panel_line_selected;
-g_pl_colors.row_focus_normal = _RGB(80, 80, 80);
-g_pl_colors.row_queued = _RGBA(150, 150, 150, 0);
-g_pl_colors.row_drop_position = _RGB(140, 142, 144);
+g_pl_colors.row_focus_normal = g_theme.colors.panel_line;
+g_pl_colors.row_queued = rgb_prop(g_properties.theme_playlist_row_queued);
+g_pl_colors.row_drop_position = g_pl_colors.row_artist_normal;
 g_pl_colors.row_drop_position_boundary = rgb_prop(g_properties.theme_playlist_row_drop_position_boundary);
 //---> Misc
-g_pl_colors.dummy_text = _RGB(80, 80, 80);
+g_pl_colors.dummy_text = g_theme.colors.panel_line;
 
 
 /** @type {Object<string, IGdiFont>} */

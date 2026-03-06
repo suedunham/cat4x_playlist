@@ -745,6 +745,11 @@ function split_color(string_value) {
     return string_value.split(/[,\s]+/);
 }
 
-function rgb_prop(color_array) {
-    return _RGB(...split_color(color_array));
+function rgb_prop(string_value) {
+    const as_array = split_color(string_value)
+    if (as_array.length === 3) {
+        return _RGB(...as_array);
+    } else {
+        return _RGBA(...as_array);
+    }
 }

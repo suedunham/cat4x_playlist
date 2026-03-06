@@ -1079,6 +1079,7 @@ function Playlist(x, y) {
     this.on_playlists_changed = function () {
         if (plman.ActivePlaylist > plman.PlaylistCount
             || plman.ActivePlaylist === -1) {
+            // TODO: Panel crashes here if last playlist is removed.
             plman.ActivePlaylist = plman.PlaylistCount - 1;
         }
 
