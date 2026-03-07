@@ -11,7 +11,6 @@ g_properties.add_properties(
         theme_window_background_color: ['user.theme.color.window_background', '32, 35, 38'],
     }
 );
-
 // Playlist viewer color properties
 g_properties.add_properties(
     {
@@ -26,7 +25,8 @@ g_properties.add_properties(
     }
 );
 
-// Internal data object.
+
+// Internal data object for colors.
 let g_theme = {};
 g_theme.name = 'CaT4X';
 g_theme.version = '0.1.0';
@@ -34,15 +34,13 @@ g_theme.folder_name = 'CaT4X';
 
 /** @type {Object<string, number>} */
 g_theme.colors = {};
-
 // General colors
 g_theme.colors.pss_back = rgb_prop(g_properties.theme_panel_back_color);
-g_theme.colors.panel_back = g_theme.colors.pss_back
+g_theme.colors.panel_back = g_theme.colors.pss_back;
 g_theme.colors.panel_front = rgb_prop(g_properties.theme_panel_front_color);
 g_theme.colors.panel_line = rgb_prop(g_properties.theme_panel_line_color);
 g_theme.colors.panel_line_selected = rgb_prop(g_properties.theme_accent_color);
 g_theme.colors.panel_text_normal = rgb_prop(g_properties.theme_text_color);
-
 // Scrollbar colors
 g_theme.colors.scroll_back = rgb_prop(g_properties.theme_window_background_color);
 g_theme.colors.scroll_arrow = g_theme.colors.panel_text_normal;
@@ -52,13 +50,13 @@ g_theme.colors.scroll_line = g_theme.colors.panel_line;
 // Playlist viewer colors
 /** @type {Object<string, number>} */
 var g_pl_colors = {};
-//---> Common
+// Common colors
 g_pl_colors.background = g_theme.colors.panel_back;
-//---> Playlist Manager
+// Playlist manager colors
 g_pl_colors.playlist_mgr_text_normal = rgb_prop(g_properties.theme_playlist_mgr_text_normal);
 g_pl_colors.playlist_mgr_text_hovered = g_theme.colors.panel_text_normal;
 g_pl_colors.playlist_mgr_text_pressed = g_pl_colors.playlist_mgr_text_normal;
-//---> Header
+// Album header colors
 g_pl_colors.group_title = rgb_prop(g_properties.theme_playlist_text_normal);
 g_pl_colors.group_title_selected = g_theme.colors.panel_text_normal;
 g_pl_colors.artist_normal = g_pl_colors.group_title;
@@ -72,7 +70,7 @@ g_pl_colors.date_playing = g_pl_colors.date_normal;
 g_pl_colors.line_normal = g_theme.colors.panel_line;
 g_pl_colors.line_playing = g_pl_colors.line_normal;
 g_pl_colors.line_selected = g_theme.colors.panel_line_selected;
-//---> Row
+// Playlist row colors
 g_pl_colors.title_selected = g_theme.colors.panel_text_normal;
 g_pl_colors.title_playing = g_theme.colors.panel_line_selected;
 g_pl_colors.title_normal = g_pl_colors.group_title;
@@ -89,12 +87,36 @@ g_pl_colors.row_focus_normal = g_theme.colors.panel_line;
 g_pl_colors.row_queued = rgb_prop(g_properties.theme_playlist_row_queued);
 g_pl_colors.row_drop_position = g_pl_colors.row_artist_normal;
 g_pl_colors.row_drop_position_boundary = rgb_prop(g_properties.theme_playlist_row_drop_position_boundary);
-//---> Misc
+// Miscellaneous colors
 g_pl_colors.dummy_text = g_theme.colors.panel_line;
 
 
+/* Font and character properties
+   Font sizes are in pixels.
+*/
+/* The scrollbar font and character properties have been refactored from
+   literal values to the properties below. The commented-out lines are the
+   values in the original script, which were chevron shapes and match
+   Windows 10 more closely. The triangles work in that Segoe UI font as
+   well as Noto Sans Symbols, with the Noto Sans Symbols 2 version being
+   narrower. The latter fonts benefit from the y offset values of down: 6
+   and up: 5. Segoe doesn't need that much correction to center them
+   vertically, maybe 1 on the down button.
+*/
+g_properties.add_properties(
+    {
+        // scroll_font: ['user.scrollbar.font', 'Segoe UI Symbol'],
+        scroll_font: ['user.scrollbar.font', 'Noto Sans Symbols 2'],
+        scroll_font_size: ['user.scrollbar.font_size', 15],
+        // scroll_down_char: ['user.scrollbar.char_down', '\uE011'],
+        scroll_down_char: ['user.scrollbar.char_down', '\u23F7'],
+        scroll_down_char_y_offset: ['user.scrollbar.char_down_y_offset', 6],
+        // scroll_up_char: ['user.scrollbar.char_up', '\uE010'],
+        scroll_up_char: ['user.scrollbar.char_up', '\u23F6'],
+        scroll_up_char_y_offset: ['user.scrollbar.char_up_y_offset', 5],
+    }
+);
 // Playlist viewer font properties
-// Font sizes are in pixels.
 g_properties.add_properties(
     {
         theme_playlist_mgr_font: ['user.theme.font.playlist_mgr', 'Noto Sans Semibold'],
@@ -125,15 +147,17 @@ g_properties.add_properties(
     }
 );
 
+
+// Internal data object for fonts.
 /** @type {Object<string, IGdiFont>} */
 var g_pl_fonts = {
     playlist_mgr: gdi.Font(g_properties.theme_playlist_mgr_font,
                            g_properties.theme_playlist_mgr_font_size),
     title_normal: gdi.Font(g_properties.theme_playlist_title_font,
                            g_properties.theme_playlist_title_font_size),
-    title_selected: gdi.Font(g_properties.theme_playlist_title_font_play_sel,
+    title_selected: gdi.Font(g_properties.theme_playlist_title_play_sel_font,
                              g_properties.theme_playlist_title_font_size),
-    title_playing: gdi.Font(g_properties.theme_playlist_title_font_play_sel,
+    title_playing: gdi.Font(g_properties.theme_playlist_title_play_sel_font,
                             g_properties.theme_playlist_title_font_size),
     artist_normal: gdi.Font(g_properties.theme_playlist_artist_font,
                             g_properties.theme_playlist_artist_font_size),

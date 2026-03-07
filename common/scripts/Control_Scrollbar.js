@@ -6,27 +6,8 @@
 include('Common.js');
 include('Theme_Settings.js');
 
-/* The scrollbar font and character properties have been refactored from
-   literal values to the properties below. The commented-out lines are the
-   values in the original script, which were chevron shapes. The triangles
-   work in that Segoe UI font as well as Noto Sans Symbols, with the
-   Noto Sans Symbols 2 version being narrower. The latter fonts benefit
-   from the y offset values of down: 6 and up: 5. Segoe doesn't need
-   that much correction to center them vertically, maybe 1 on the down
-   button.
-*/
-
 g_properties.add_properties(
     {
-        // scroll_font: ['user.scrollbar.font', 'Segoe UI Symbol'],
-        scroll_font: ['user.scrollbar.font', 'Noto Sans Symbols 2'],
-        // scroll_down_char: ['user.scrollbar.char_down', '\uE011'],
-        scroll_down_char: ['user.scrollbar.char_down', '\u23F7'],
-        scroll_down_char_y_offset: ['user.scrollbar.char_down_y_offset', 6],
-        // scroll_up_char: ['user.scrollbar.char_up', '\uE010'],
-        scroll_up_char: ['user.scrollbar.char_up', '\u23F6'],
-        scroll_up_char_y_offset: ['user.scrollbar.char_up_y_offset', 5],
-        scroll_font_size: ['user.scrollbar.font_size', 15],
         wheel_scroll_page: ['user.scrollbar.wheel_whole_page', false]
     }
 );
