@@ -405,17 +405,17 @@ function ScrollBar(x, y, w, h, row_h, fn_redraw) {
 
         var ico_back_colors =
             [
-                g_theme.colors.panel_front,
-                g_theme.colors.panel_front,
-                g_theme.colors.panel_front,
-                g_theme.colors.panel_front
+                g_theme.colors.scroll_btn_back_normal,
+                g_theme.colors.scroll_btn_back_hover,
+                g_theme.colors.scroll_btn_back_down,
+                g_theme.colors.scroll_btn_back_hot
             ];
         var ico_fore_colors =
             [
-                g_theme.colors.scroll_arrow,
-                g_theme.colors.scroll_arrow,
-                g_theme.colors.scroll_arrow,
-                g_theme.colors.scroll_arrow
+                g_theme.colors.scroll_btn_fore_normal,
+                g_theme.colors.scroll_btn_fore_hover,
+                g_theme.colors.scroll_btn_fore_down,
+                g_theme.colors.scroll_btn_fore_hot
             ];
 
         var btn =
@@ -453,11 +453,15 @@ function ScrollBar(x, y, w, h, row_h, fn_redraw) {
 
                 if (i === 'lineUp') {
                     grClip.FillSolidRect(m, 0, w - m * 2, h - 1, backColor);
-                    grClip.DrawRect(m, 0, w - m * 2, h - 2, 1, g_theme.colors.scroll_line);
+                    if (g_theme.colors.scroll_outline_btn) {
+                        grClip.DrawRect(m, 0, w - m * 2, h - 2, 1, g_theme.colors.scroll_line);
+                    }
                 }
                 else if (i === 'lineDown') {
                     grClip.FillSolidRect(m, 1, w - m * 2, h - 1, backColor);
-                    grClip.DrawRect(m, 1, w - m * 2, h - 2, 1, g_theme.colors.scroll_line);
+                    if (g_theme.colors.scroll_outline_btn) {
+                        grClip.DrawRect(m, 1, w - m * 2, h - 2, 1, g_theme.colors.scroll_line);
+                    }
                 }
 
                 grClip.SetSmoothingMode(SmoothingMode.HighQuality);
@@ -497,12 +501,11 @@ function ScrollBar(x, y, w, h, row_h, fn_redraw) {
     }
 
     function create_dynamic_scrollbar_images(thumb_w, thumb_h) {
-        // As with the buttons, the one color desired is just spammed out.
         var thumb_colors =
             [
-                g_theme.colors.panel_front,
-                g_theme.colors.panel_front,
-                g_theme.colors.panel_front
+                g_theme.colors.scroll_thumb_back_normal,
+                g_theme.colors.scroll_thumb_back_hover,
+                g_theme.colors.scroll_thumb_back_down
             ];
 
         var w = thumb_w,
@@ -517,7 +520,9 @@ function ScrollBar(x, y, w, h, row_h, fn_redraw) {
 
             var color = thumb_colors[s];
             grClip.FillSolidRect(m, 0, w - m * 2, h, color);
-            grClip.DrawRect(m, 0, w - m * 2, h - 1, 1, g_theme.colors.scroll_line);
+            if (g_theme.colors.scroll_outline_thumb) {
+                grClip.DrawRect(m, 0, w - m * 2, h - 1, 1, g_theme.colors.scroll_line);
+            }
 
             img.ReleaseGraphics(grClip);
             stateImages[s] = img;

@@ -42,9 +42,22 @@ g_theme.colors.panel_line_selected = rgb_prop(g_properties.theme_accent_color);
 g_theme.colors.panel_text_normal = rgb_prop(g_properties.theme_text_color);
 g_theme.colors.panel_text_dim = rgb_prop(g_properties.theme_panel_line_color);
 // Scrollbar colors
+g_theme.colors.scroll_outline_btn = true;
+g_theme.colors.scroll_outline_thumb = true;
 g_theme.colors.scroll_back = rgb_prop(g_properties.theme_window_background_color);
-g_theme.colors.scroll_arrow = g_theme.colors.panel_text_normal;
 g_theme.colors.scroll_line = g_theme.colors.panel_line;
+g_theme.colors.scroll_btn_fore_normal = g_theme.colors.panel_text_normal;
+g_theme.colors.scroll_btn_fore_hover = g_theme.colors.panel_text_normal;
+g_theme.colors.scroll_btn_fore_down = g_theme.colors.panel_text_normal;
+g_theme.colors.scroll_btn_fore_hot = g_theme.colors.panel_text_normal;
+g_theme.colors.scroll_btn_back_normal = g_theme.colors.panel_front;
+g_theme.colors.scroll_btn_back_hover = g_theme.colors.panel_front;
+g_theme.colors.scroll_btn_back_down = g_theme.colors.panel_front;
+g_theme.colors.scroll_btn_back_hot = g_theme.colors.panel_front;
+g_theme.colors.scroll_thumb_back_normal = g_theme.colors.panel_front;
+g_theme.colors.scroll_thumb_back_hover = g_theme.colors.panel_front;
+g_theme.colors.scroll_thumb_back_down = g_theme.colors.panel_front;
+// g_theme.colors.scroll_thumb_back_hot = g_theme.colors.panel_front;
 
 
 // Playlist viewer colors
