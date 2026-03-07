@@ -15,6 +15,7 @@ g_properties.add_properties(
         scrollbar_bottom_pad: ['user.scrollbar.pad.bottom', 1],
         // scrollbar_w:          ['user.scrollbar.width', utils.GetSystemMetrics(2)],
         scrollbar_w:          ['user.scrollbar.width', 18],
+        scrollbar_btn_h:      ['user.scrollbar.button_height', 16],
 
         row_h: ['user.row.height', 20],
 

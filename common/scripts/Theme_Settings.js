@@ -131,6 +131,7 @@ g_properties.add_properties(
         // scroll_font: ['user.theme.scrollbar.font', 'Segoe UI Symbol'],
         scroll_font: ['user.theme.scrollbar.font', 'Noto Sans Symbols 2'],
         scroll_font_size: ['user.theme.scrollbar.font_size', 15],
+        scroll_text_hint: ['user.theme.scrollbar.text_hint', TextRenderingHint.SingleBitPerPixel],
         // scroll_down_char: ['user.theme.scrollbar.char_down', 'E011'],
         scroll_down_char: ['user.theme.scrollbar.char_down', '23F7'],
         scroll_down_char_y_offset: ['user.theme.scrollbar.char_down_y_offset', 7],
@@ -175,6 +176,7 @@ g_theme.fonts.panel = gdi.Font(g_properties.panel_message_font,
                                g_properties.panel_message_font_size);
 g_theme.fonts.scrollbar = gdi.Font(g_properties.scroll_font,
                                    g_properties.scroll_font_size);
+g_theme.fonts.scrollbar_text_hint = g_properties.scroll_text_hint;
 g_theme.chars = {};
 g_theme.chars.scrollbar_down = ucode_char(g_properties.scroll_down_char);
 g_theme.chars.scrollbar_down_y_offset = g_properties.scroll_down_char_y_offset;

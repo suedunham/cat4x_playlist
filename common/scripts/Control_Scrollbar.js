@@ -101,7 +101,7 @@ function ScrollBar(x, y, w, h, row_h, fn_redraw) {
     };
 
     this.calc_params = function () {
-        this.btn_h = this.w - 2;
+        this.btn_h = g_properties.scrollbar_btn_h;
         // draw info
         this.scrollbar_h = this.h - this.btn_h * 2;
         this.thumb_h = Math.max(Math.round(this.scrollbar_h * this.rows_drawn / this.row_count), 12);
@@ -465,7 +465,7 @@ function ScrollBar(x, y, w, h, row_h, fn_redraw) {
                 }
 
                 grClip.SetSmoothingMode(SmoothingMode.HighQuality);
-                // grClip.SetTextRenderingHint(TextRenderingHint.ClearTypeGridFit);
+                grClip.SetTextRenderingHint(g_theme.fonts.scrollbar_text_hint);
 
                 var btn_format = StringFormat();
                 btn_format.alignment = StringAlignment.center;
