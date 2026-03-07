@@ -14,7 +14,7 @@ g_properties.add_properties(
 // Playlist viewer color properties
 g_properties.add_properties(
     {
-        theme_playlist_mgr_text_normal: ['user.theme.color.playlist_mgr_text', '132, 141, 150'],
+        theme_playlist_mgr_text_normal: ['user.theme.color.playlist_mgr_text', '120, 122, 124'],
         theme_playlist_text_normal: ['user.theme.color.playlist_text', '161, 169, 177'],
         theme_playlist_row_background_alt: ['user.theme.color.playlist_row_background_alt', '29, 31, 34'],
         theme_playlist_row_artist_normal: ['user.theme.color.playlist_row_artist_normal', '120, 122, 124'],
