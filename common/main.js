@@ -9,5 +9,5 @@ function on_paint(gr) {
         'This is a utility package. It does nothing by itself.',
         gdi.Font(g_properties.panel_message_font,
                  g_properties.panel_message_font_size),
-        g_theme.colors.panel_text_normal, 0, 0, 0, 0);
+        g_theme.colors.panel_text_dim, 0, 0, 0, 0);
 }

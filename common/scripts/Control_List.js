@@ -8,9 +8,6 @@ g_properties.add_properties(
         list_right_pad:  ['user.list.pad.right', 0],
         list_bottom_pad: ['user.list.pad.bottom', 0],
 
-        panel_message_font: ['user.panel.message_font', 'Noto Sans SemiBold'],
-        panel_message_font_size: ['user.panel.message_font_size', 24],
-
         show_scrollbar:       ['user.scrollbar.show', true],
         scrollbar_right_pad:  ['user.scrollbar.pad.right', 0],
         scrollbar_top_pad:    ['user.scrollbar.pad.top', 0],
@@ -149,11 +146,9 @@ List.prototype.on_paint = function (gr) {
         text_format.trimming = StringTrimming.ellipsis_char;
         text_format.format_flags = StringFormatFlags.no_wrap;
 
-        gr.DrawString('No rows to display',
-                      gdi.Font(g_properties.panel_message_font,
-                               g_properties.panel_message_font_size),
-                      _RGB(70, 70, 70), this.x, this.y, this.w, this.h,
-                      text_format.value());
+        gr.DrawString('No rows to display', g_theme.fonts.panel,
+                      g_theme.theme_panel_text_dim,
+                      this.x, this.y, this.w, this.h, text_format.value());
     }
 
     if (this.is_scrollbar_available) {

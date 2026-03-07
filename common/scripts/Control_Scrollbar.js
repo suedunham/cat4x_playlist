@@ -403,12 +403,6 @@ function ScrollBar(x, y, w, h, row_h, fn_redraw) {
             return;
         }
 
-        // var fontSymbols = gdi.Font('Segoe UI Symbol', 15);
-        var fontSymbols = gdi.Font(g_properties.scroll_font, g_properties.scroll_font_size);
-
-        // The hover, etc. colors aren't needed, but it's simpler for now just
-        // to duplicate the normal state for all four rather than remove their
-        // invocation elsewhere.
         var ico_back_colors =
             [
                 g_theme.colors.panel_front,
@@ -427,14 +421,14 @@ function ScrollBar(x, y, w, h, row_h, fn_redraw) {
         var btn =
             {
                 lineUp:   {
-                    ico:  g_properties.scroll_up_char,
-                    font: fontSymbols,
+                    ico:  g_theme.chars.scrollbar_up,
+                    font: g_theme.fonts.scrollbar,
                     w:    that.w,
                     h:    that.w - 1
                 },
                 lineDown: {
-                    ico:  g_properties.scroll_down_char,
-                    font: fontSymbols,
+                    ico:  g_theme.chars.scrollbar_down,
+                    font: g_theme.fonts.scrollbar,
                     w:    that.w,
                     h:    that.w - 1
                 }
@@ -479,12 +473,12 @@ function ScrollBar(x, y, w, h, row_h, fn_redraw) {
                 }
                 if (i === 'lineDown') {
                     grClip.DrawString(item.ico, item.font, icoColor,
-                        p, g_properties.scroll_down_char_y_offset + p,
+                        p, g_theme.chars.scrollbar_down_y_offset + p,
                         w, h, btn_format.value());
                 }
                 else if (i === 'lineUp') {
                     grClip.DrawString(item.ico, item.font, icoColor,
-                        p, g_properties.scroll_up_char_y_offset + p,
+                        p, g_theme.chars.scrollbar_up_y_offset + p,
                         w, h, btn_format.value());
                 }
 

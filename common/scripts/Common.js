@@ -753,3 +753,7 @@ function rgb_prop(string_value) {
         return _RGBA(...as_array);
     }
 }
+
+function ucode_char(hex_value) {
+    return String.fromCodePoint(parseInt(hex_value, 16));
+}

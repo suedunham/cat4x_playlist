@@ -21,7 +21,6 @@ g_properties.add_properties(
         theme_playlist_row_selected: ['user.theme.color.playlist_row_selected', '22, 58, 76'],
         theme_playlist_row_queued: ['user.theme.color.playlist_row_queued', '252, 252, 252, 20'],
         theme_playlist_row_drop_position_boundary: ['user.theme.color.playlist_drop_position_boundary', '233, 118, 61'],
-
     }
 );
 
@@ -41,6 +40,7 @@ g_theme.colors.panel_front = rgb_prop(g_properties.theme_panel_front_color);
 g_theme.colors.panel_line = rgb_prop(g_properties.theme_panel_line_color);
 g_theme.colors.panel_line_selected = rgb_prop(g_properties.theme_accent_color);
 g_theme.colors.panel_text_normal = rgb_prop(g_properties.theme_text_color);
+g_theme.colors.panel_text_dim = rgb_prop(g_properties.theme_panel_line_color);
 // Scrollbar colors
 g_theme.colors.scroll_back = rgb_prop(g_properties.theme_window_background_color);
 g_theme.colors.scroll_arrow = g_theme.colors.panel_text_normal;
@@ -87,13 +87,20 @@ g_pl_colors.row_focus_normal = g_theme.colors.panel_line;
 g_pl_colors.row_queued = rgb_prop(g_properties.theme_playlist_row_queued);
 g_pl_colors.row_drop_position = g_pl_colors.row_artist_normal;
 g_pl_colors.row_drop_position_boundary = rgb_prop(g_properties.theme_playlist_row_drop_position_boundary);
-// Miscellaneous colors
-g_pl_colors.dummy_text = g_theme.colors.panel_line;
 
 
 /* Font and character properties
    Font sizes are in pixels.
 */
+// General font properties
+g_properties.add_properties(
+    {
+        panel_message_font: ['user.theme.panel.message_font', 'Noto Sans Semibold'],
+        panel_message_font_size: ['user.theme.panel.message_font_size', 24],
+    }
+);
+
+// Scrollbar font and character properties
 /* The scrollbar font and character properties have been refactored from
    literal values to the properties below. The commented-out lines are the
    values in the original script, which were chevron shapes and match
@@ -105,15 +112,15 @@ g_pl_colors.dummy_text = g_theme.colors.panel_line;
 */
 g_properties.add_properties(
     {
-        // scroll_font: ['user.scrollbar.font', 'Segoe UI Symbol'],
-        scroll_font: ['user.scrollbar.font', 'Noto Sans Symbols 2'],
-        scroll_font_size: ['user.scrollbar.font_size', 15],
-        // scroll_down_char: ['user.scrollbar.char_down', '\uE011'],
-        scroll_down_char: ['user.scrollbar.char_down', '\u23F7'],
-        scroll_down_char_y_offset: ['user.scrollbar.char_down_y_offset', 6],
-        // scroll_up_char: ['user.scrollbar.char_up', '\uE010'],
-        scroll_up_char: ['user.scrollbar.char_up', '\u23F6'],
-        scroll_up_char_y_offset: ['user.scrollbar.char_up_y_offset', 5],
+        // scroll_font: ['user.theme.scrollbar.font', 'Segoe UI Symbol'],
+        scroll_font: ['user.theme.scrollbar.font', 'Noto Sans Symbols 2'],
+        scroll_font_size: ['user.theme.scrollbar.font_size', 15],
+        // scroll_down_char: ['user.theme.scrollbar.char_down', 'E011'],
+        scroll_down_char: ['user.theme.scrollbar.char_down', '23F7'],
+        scroll_down_char_y_offset: ['user.theme.scrollbar.char_down_y_offset', 6],
+        // scroll_up_char: ['user.theme.scrollbar.char_up', 'E010'],
+        scroll_up_char: ['user.theme.scrollbar.char_up', '23F6'],
+        scroll_up_char_y_offset: ['user.theme.scrollbar.char_up_y_offset', 5],
     }
 );
 // Playlist viewer font properties
@@ -142,13 +149,23 @@ g_properties.add_properties(
         theme_playlist_rating_not_set_font_size: ['user.theme.font.playlist_rating_not_set_size', 14],
         theme_playlist_rating_set_font: ['user.theme.font.playlist_rating_set', 'Noto Sans Symbols'],
         theme_playlist_rating_set_font_size: ['user.theme.font.playlist_rating_set_size', 16],
-        theme_playlist_empty_font: ['user.theme.font.playlist_empty', 'Noto Sans'],
-        theme_playlist_empty_font_size: ['user.theme.font.playlist_empty_size', 16],
     }
 );
 
 
-// Internal data object for fonts.
+// Internal data object for general fonts and characters
+g_theme.fonts = {};
+g_theme.fonts.panel = gdi.Font(g_properties.panel_message_font,
+                               g_properties.panel_message_font_size);
+g_theme.fonts.scrollbar = gdi.Font(g_properties.scroll_font,
+                                   g_properties.scroll_font_size);
+g_theme.chars = {};
+g_theme.chars.scrollbar_down = ucode_char(g_properties.scroll_down_char);
+g_theme.chars.scrollbar_down_y_offset = g_properties.scroll_down_char_y_offset;
+g_theme.chars.scrollbar_up = ucode_char(g_properties.scroll_up_char);
+g_theme.chars.scrollbar_up_y_offset = g_properties.scroll_up_char_y_offset;
+
+// Internal data object for playlist fonts.
 /** @type {Object<string, IGdiFont>} */
 var g_pl_fonts = {
     playlist_mgr: gdi.Font(g_properties.theme_playlist_mgr_font,
@@ -185,6 +202,4 @@ var g_pl_fonts = {
                              g_properties.theme_playlist_rating_not_set_font_size),
     rating_set: gdi.Font(g_properties.theme_playlist_rating_set_font,
                          g_properties.theme_playlist_rating_set_font_size),
-    empty_text: gdi.Font(g_properties.theme_playlist_empty_font,
-                         g_properties.theme_playlist_empty_font_size),
 };
