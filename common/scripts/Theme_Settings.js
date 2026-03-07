@@ -42,6 +42,10 @@ g_theme.colors.panel_line_selected = rgb_prop(g_properties.theme_accent_color);
 g_theme.colors.panel_text_normal = rgb_prop(g_properties.theme_text_color);
 g_theme.colors.panel_text_dim = rgb_prop(g_properties.theme_panel_line_color);
 // Scrollbar colors
+/* These have not yet been promoted to properties. The WINE (no theme)
+   scheme doesn't require them all, as can be seen by the common settings
+   between them. The original script and Windows 10 do, however.
+*/
 g_theme.colors.scroll_outline_btn = true;
 g_theme.colors.scroll_outline_thumb = true;
 g_theme.colors.scroll_back = rgb_prop(g_properties.theme_window_background_color);
@@ -57,7 +61,6 @@ g_theme.colors.scroll_btn_back_hot = g_theme.colors.panel_front;
 g_theme.colors.scroll_thumb_back_normal = g_theme.colors.panel_front;
 g_theme.colors.scroll_thumb_back_hover = g_theme.colors.panel_front;
 g_theme.colors.scroll_thumb_back_down = g_theme.colors.panel_front;
-// g_theme.colors.scroll_thumb_back_hot = g_theme.colors.panel_front;
 
 
 // Playlist viewer colors
@@ -130,7 +133,7 @@ g_properties.add_properties(
         scroll_font_size: ['user.theme.scrollbar.font_size', 15],
         // scroll_down_char: ['user.theme.scrollbar.char_down', 'E011'],
         scroll_down_char: ['user.theme.scrollbar.char_down', '23F7'],
-        scroll_down_char_y_offset: ['user.theme.scrollbar.char_down_y_offset', 6],
+        scroll_down_char_y_offset: ['user.theme.scrollbar.char_down_y_offset', 7],
         // scroll_up_char: ['user.theme.scrollbar.char_up', 'E010'],
         scroll_up_char: ['user.theme.scrollbar.char_up', '23F6'],
         scroll_up_char_y_offset: ['user.theme.scrollbar.char_up_y_offset', 5],

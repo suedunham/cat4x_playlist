@@ -101,7 +101,7 @@ function ScrollBar(x, y, w, h, row_h, fn_redraw) {
     };
 
     this.calc_params = function () {
-        this.btn_h = this.w - 1;
+        this.btn_h = this.w - 2;
         // draw info
         this.scrollbar_h = this.h - this.btn_h * 2;
         this.thumb_h = Math.max(Math.round(this.scrollbar_h * this.rows_drawn / this.row_count), 12);
@@ -424,13 +424,13 @@ function ScrollBar(x, y, w, h, row_h, fn_redraw) {
                     ico:  g_theme.chars.scrollbar_up,
                     font: g_theme.fonts.scrollbar,
                     w:    that.w,
-                    h:    that.w - 1
+                    h:    that.w - 2
                 },
                 lineDown: {
                     ico:  g_theme.chars.scrollbar_down,
                     font: g_theme.fonts.scrollbar,
                     w:    that.w,
-                    h:    that.w - 1
+                    h:    that.w - 2
                 }
             };
 
@@ -465,7 +465,7 @@ function ScrollBar(x, y, w, h, row_h, fn_redraw) {
                 }
 
                 grClip.SetSmoothingMode(SmoothingMode.HighQuality);
-                grClip.SetTextRenderingHint(TextRenderingHint.ClearTypeGridFit);
+                // grClip.SetTextRenderingHint(TextRenderingHint.ClearTypeGridFit);
 
                 var btn_format = StringFormat();
                 btn_format.alignment = StringAlignment.center;
