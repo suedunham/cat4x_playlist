@@ -3671,7 +3671,7 @@ function Header(parent, x, y, w, h, idx) {
                     grClip.DrawString('LOADING', g_pl_fonts.cover, line_color, art_box_x, art_box_y, art_box_size, art_box_size, g_string_format_center.value());
                 }
                 else {// null
-                    grClip.DrawString('NO COVER', g_pl_fonts.cover, _RGB(100, 100, 100), art_box_x, art_box_y, art_box_size, art_box_size, g_string_format_center.value());
+                    grClip.DrawString('NO COVER', g_pl_fonts.cover, g_theme.colors.panel_text_dim, art_box_x, art_box_y, art_box_size, art_box_size, g_string_format_center.value());
                 }
 
                 grClip.DrawRect(art_box_x, art_box_y, art_box_w - 1, art_box_h - 1, 1, line_color);
@@ -4190,7 +4190,7 @@ function Row(x, y, w, h, metadb, idx, cur_playlist_idx_arg) {
                 var length_x = this.x + this.w - length_w - right_pad;
 
                 gr.DrawString(length_text, title_font, title_color, length_x, this.y, length_w, this.h, g_string_format_center.value());
-                testRect && gr.DrawRect(length_x, this.y - 1, length_w, this.h, 1, _RGBA(155, 155, 255, 250));
+                testRect && gr.DrawRect(length_x, this.y - 1, length_w, this.h, 1, g_pl_colors.row_test_rect);
             }
             // We always want that padding
             right_pad += Math.max(length_w, Math.ceil(gr.MeasureString(length_text, title_font, 0, 0, 0, 0).Width + 10));
@@ -4223,7 +4223,7 @@ function Row(x, y, w, h, metadb, idx, cur_playlist_idx_arg) {
                 var count_x = this.x + this.w - count_w - right_pad;
 
                 gr.DrawString(count_text, g_pl_fonts.playcount, count_color, count_x, this.y, count_w, this.h, g_string_format_center.value());
-                testRect && gr.DrawRect(count_x, this.y - 1, count_w, this.h, 1, _RGBA(155, 155, 255, 250));
+                testRect && gr.DrawRect(count_x, this.y - 1, count_w, this.h, 1, g_pl_colors.row_test_rect);
 
                 right_pad = this.w - (count_x - this.x) + 5;
             }
@@ -4271,7 +4271,7 @@ function Row(x, y, w, h, metadb, idx, cur_playlist_idx_arg) {
 
             gr.DrawString(full_title_text, title_font, title_color, cur_x, this.y, title_w, this.h, title_text_format.value());
 
-            testRect && gr.DrawRect(title_x, this.y - 1, title_w, this.h, 1, _RGBA(155, 155, 255, 250));
+            testRect && gr.DrawRect(title_x, this.y - 1, title_w, this.h, 1, g_pl_colors.row_test_rect);
 
             title_text_format.format_flags |= StringFormatFlags.measure_trailing_spaces;
 
@@ -4296,7 +4296,7 @@ function Row(x, y, w, h, metadb, idx, cur_playlist_idx_arg) {
 
             gr.DrawString(full_title_artist_text, title_artist_font, title_artist_color, title_artist_x, this.y, title_artist_w, this.h, title_artist_text_format.value());
 
-            testRect && gr.DrawRect(title_artist_x, this.y - 1, title_artist_w, this.h, 1, _RGBA(155, 155, 255, 250));
+            testRect && gr.DrawRect(title_artist_x, this.y - 1, title_artist_w, this.h, 1, g_pl_colors.row_test_rect);
         }
     };
 

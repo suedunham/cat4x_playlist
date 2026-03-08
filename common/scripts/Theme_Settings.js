@@ -21,6 +21,12 @@ g_properties.add_properties(
         theme_playlist_row_selected: ['user.theme.color.playlist_row_selected', '22, 58, 76'],
         theme_playlist_row_queued: ['user.theme.color.playlist_row_queued', '252, 252, 252, 20'],
         theme_playlist_row_drop_position_boundary: ['user.theme.color.playlist_drop_position_boundary', '233, 118, 61'],
+        /* I don't know what this last one does, if anything, since it
+           appears that it is only drawn when a particular variable is
+           true. That variable is set to false and then never touched
+           again. But it's a literal, and we hates literals.
+        */
+        theme_playlist_row_test_rect: ['user.theme.color.playlist_row_test_rect', '155, 155, 255, 250'],
     }
 );
 
@@ -103,6 +109,7 @@ g_pl_colors.row_focus_normal = g_theme.colors.panel_line;
 g_pl_colors.row_queued = rgb_prop(g_properties.theme_playlist_row_queued);
 g_pl_colors.row_drop_position = g_pl_colors.row_artist_normal;
 g_pl_colors.row_drop_position_boundary = rgb_prop(g_properties.theme_playlist_row_drop_position_boundary);
+g_pl_colors.row_test_rect = rgb_prop(g_properties.theme_playlist_row_test_rect);
 
 
 /* Font and character properties
