@@ -1,0 +1,58 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Control Panel\Colors]
+; Values drawn from /usr/share/color-schemes/BreezeDark.colors where
+; possible
+
+; Colors:Window:BackgroundNormal
+"ActiveBorder"="32 35 38"
+"ActiveTitle"="32 35 38"
+"Background"="32 35 38"
+"GradientActiveTitle"="32 35 38"
+"GradientInactiveTitle"="32 35 38"
+"InactiveBorder"="32 35 38"
+"InactiveTitle"="32 35 38"
+"InfoWindow"="32 35 38"
+"Menu"="32 35 38"
+"MenuBar"="32 35 38"
+"Scrollbar"="32 35 38"
+"WindowFrame"="32 35 38"
+
+; Colors:Window:BackgroundAlternate
+; Including DkShadow and Hilight flattens the WinXP 3-D effect while
+; maintaining the line weight.
+"ButtonDkShadow"="41 44 48"
+"ButtonFace"="41 44 48"
+"ButtonHilight"="41 44 48"
+
+; Colors:Window:ForegroundNormal
+"ButtonText"="252 252 252"
+"HilightText"="252 252 252"
+"MenuText"="252 252 252"
+"TitleText"="252 252 252"
+"WindowText"="252 252 252"
+
+; Colors:Window:ForegroundInactive
+"InactiveTitleText"="161 169 177"
+"InfoText"="161 169 177"
+
+; Color picker: window section borders
+"ButtonLight"="76 78 80"
+"ButtonShadow"="76 78 80"
+"MenuHilight"="76 78 80"
+
+; Colors:View:BackgroundNormal
+"Window"="20 22 24"
+
+; Lightened manually from BackgroundAlternate
+"GrayText"="115 120 125"
+
+; Accent color
+"Hilight"="61 174 233"
+
+; Darkened accent color
+"HotTrackingColor"="24 70 93"
+
+; These have not been seen in foobar2000.
+"AppWorkSpace"="0 0 200"
+"ButtonAlternativeFace"="200 0 0"
